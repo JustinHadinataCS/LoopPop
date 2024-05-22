@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 @Configuration
 public class LoopPop_UserConfig {
@@ -26,6 +27,9 @@ public class LoopPop_UserConfig {
                     LocalDate.of(2003, Month.DECEMBER,
                             29),
                     20
+            );
+            repository.saveAll(
+                    List.of(brad, jacob)
             );
         };
     }
