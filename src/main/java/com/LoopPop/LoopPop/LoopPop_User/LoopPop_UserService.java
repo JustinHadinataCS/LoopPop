@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LoopPop_UserService {
@@ -20,4 +21,14 @@ public class LoopPop_UserService {
     public List<LoopPop_User> GetLoopPopUser() {
             return loopPop_userRepository.findAll();
     }
+    public  void addNew_LoopPop_User(LoopPop_User loopPop_user){
+        Optional<LoopPop_User> loopPopUser_ByEmail = loopPop_userRepository.findsLoopPopUserByEmail(loopPop_user.getEmail());
+        if(loopPopUser_ByEmail.isPresent()){
+            throw new IllegalStateException("Email is not available");
+        }
+        System.out.println(loopPop_user);
+    }
+
+
+
 }

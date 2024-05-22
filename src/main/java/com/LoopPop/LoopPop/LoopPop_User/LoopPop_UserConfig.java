@@ -19,14 +19,12 @@ public class LoopPop_UserConfig {
                     1L,
                     "Brad", "Brad@gmail.com",
                     LocalDate.of(2000, Month.DECEMBER,
-                            5),
-                    21
+                            5)
             );
             LoopPop_User jacob = new LoopPop_User(
                     "Jacob", "Jacob@gmail.com",
                     LocalDate.of(2003, Month.DECEMBER,
-                            29),
-                    20
+                            29)
             );
             repository.saveAll(
                     List.of(brad, jacob)
