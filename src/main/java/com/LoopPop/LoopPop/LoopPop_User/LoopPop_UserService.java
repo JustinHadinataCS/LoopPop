@@ -22,11 +22,11 @@ public class LoopPop_UserService {
             return loopPop_userRepository.findAll();
     }
     public  void addNew_LoopPop_User(LoopPop_User loopPop_user){
-        Optional<LoopPop_User> loopPopUser_ByEmail = loopPop_userRepository.findsLoopPopUserByEmail(loopPop_user.getEmail());
-        if(loopPopUser_ByEmail.isPresent()){
+        Optional<LoopPop_User> LoopPop_Optional = loopPop_userRepository.findsLoopPopUserByEmail(loopPop_user.getEmail());
+        if(LoopPop_Optional.isPresent()){
             throw new IllegalStateException("Email is not available");
         }
-        System.out.println(loopPop_user);
+        loopPop_userRepository.save(loopPop_user);
     }
 
 
