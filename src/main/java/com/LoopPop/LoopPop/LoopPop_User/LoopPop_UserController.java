@@ -24,5 +24,10 @@ public class LoopPop_UserController {
     public void registerNew_LoopPop_User(@RequestBody LoopPop_User loopPop_user){
         loopPop_UserService.addNew_LoopPop_User(loopPop_user);
     }
+
+    @DeleteMapping(path = "{LoopPop_UserId}")
+    public void delete_LoopPop_user(@PathVariable("LoopPop_UserId") Long LoopPop_UserId){
+        loopPop_UserService.LoopPop_deleteUser(LoopPop_UserId);
+    }
 }
 

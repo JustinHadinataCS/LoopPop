@@ -29,6 +29,14 @@ public class LoopPop_UserService {
         loopPop_userRepository.save(loopPop_user);
     }
 
+    public void LoopPop_deleteUser(Long LoopPop_UserId){
+        boolean exists = loopPop_userRepository.existsById(LoopPop_UserId);
+        if (!exists) {
+            throw new IllegalStateException("User with id " + LoopPop_UserId + " does not exist!");
+        }
+        loopPop_userRepository.deleteById(LoopPop_UserId);
+    }
+
 
 
 }
