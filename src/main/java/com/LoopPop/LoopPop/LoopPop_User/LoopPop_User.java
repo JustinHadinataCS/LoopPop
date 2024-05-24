@@ -99,3 +99,4 @@ public class LoopPop_User {
                 '}';
     }
 }
+//this is the getter, setter and constructor, basically simpan data spaya Layer lain bsa pake.

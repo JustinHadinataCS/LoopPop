@@ -13,14 +13,5 @@ public class LoopPopApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LoopPopApplication.class, args);
 	}
-	@Controller
-	public class LoopPopController {
-		@GetMapping("/index")
-		public String index() {
-            return "index";
-        }
 
-
-
-	}
 }
