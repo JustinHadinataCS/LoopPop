@@ -1,4 +1,5 @@
 package com.LoopPop.LoopPop.LoopPop_User;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,12 @@ public class LoopPop_UserController {
     @DeleteMapping(path = "{LoopPop_UserId}")
     public void delete_LoopPop_user(@PathVariable("LoopPop_UserId") Long LoopPop_UserId){
         loopPop_UserService.LoopPop_deleteUser(LoopPop_UserId);
+    }
+
+    @PutMapping(path = "{LoopPop_UserId}")
+    public void update_LoopPop_User(@PathVariable("LoopPop_UserId") Long LoopPop_UserId,
+                                    @RequestBody LoopPop_User updatedLoopPop_User) {
+        loopPop_UserService.update_LoopPop_User(LoopPop_UserId, updatedLoopPop_User);
     }
 }
 

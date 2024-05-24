@@ -1,4 +1,5 @@
 package com.LoopPop.LoopPop.LoopPop_User;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -6,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -36,7 +38,25 @@ public class LoopPop_UserService {
         }
         loopPop_userRepository.deleteById(LoopPop_UserId);
     }
+    @Transactional
+    public void update_LoopPop_User(Long LoopPop_UserId, LoopPop_User updatedLoopPop_User) {
+        LoopPop_User loopPop_user = loopPop_userRepository.findById(LoopPop_UserId)
+                .orElseThrow(() -> new IllegalStateException("User with id " + LoopPop_UserId + " does not exist!"));
+
+        if (updatedLoopPop_User.getName() != null && !Objects.equals(loopPop_user.getName(), updatedLoopPop_User.getName())) {
+            loopPop_user.setName(updatedLoopPop_User.getName());
+        }
+
+        if (updatedLoopPop_User.getEmail() != null && !Objects.equals(loopPop_user.getEmail(), updatedLoopPop_User.getEmail())) {
+            Optional<LoopPop_User> LoopPop_Optional = loopPop_userRepository.findsLoopPopUserByEmail(updatedLoopPop_User.getEmail());
+            if (LoopPop_Optional.isPresent()) {
+                throw new IllegalStateException("Email is not available");
+            }
+            loopPop_user.setEmail(updatedLoopPop_User.getEmail());
+        }
+    }
+    }
 
 
 
-}
+

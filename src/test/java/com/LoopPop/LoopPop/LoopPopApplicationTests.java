@@ -7,6 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 class LoopPopApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void contextLoads()   {
 	}
 }
