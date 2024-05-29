@@ -1,4 +1,4 @@
-package com.LoopPop.LoopPop.LoopPop_User;
+package com.LoopPop.LoopPop;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
