@@ -19,7 +19,7 @@ public class LoopPop_UserController {
     @GetMapping
     public List<LoopPop_User> GetLoopPopUser() {
 
-        return loopPop_UserService.GetLoopPopUser();
+        return  loopPop_UserService.GetLoopPopUser();
     }
     @PostMapping
     public void registerNew_LoopPop_User(@RequestBody LoopPop_User loopPop_user){

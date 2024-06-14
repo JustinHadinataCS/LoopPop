@@ -1,4 +1,3 @@
-/*
 package com.LoopPop.LoopPop.AppUser;
 
 public enum AppUserRole {
@@ -6,4 +5,3 @@ public enum AppUserRole {
     ADMIN
 
 }
-*/

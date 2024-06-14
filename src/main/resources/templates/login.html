@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #048ED4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: white;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #E38027;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        button:hover {
+            background-color: #B4651F;
+        }
+
+        .message {
+            background-color: #E38027;
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px auto;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        span{
+            text-align: center;
+            width: 100%;
+            color: white;
+        }
+
+        a{
+            text-decoration: none;
+            color: #E38027;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <div th:if="${param.error}">
+        <p class="message success">Invalid Credentials!</p>
+    </div>
+
+    <div th:if="${param.logout}">
+        <div class="message success">
+            <p>Logout Successful!</p>
+        </div>
+    </div>
+
+    <h2>Login</h2>
+    <form method="post" role="form" th:action="@{/login}">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <span>No account? <a th:href="@{/registration}">Register</a></span>
+</div>
+</body>
+</html>

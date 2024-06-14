@@ -1,4 +1,3 @@
-/*
 package com.LoopPop.LoopPop.Security;
 
 import org.springframework.context.annotation.Bean;
@@ -12,4 +11,4 @@ public class PasswordEncoder {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-}*/
+}
