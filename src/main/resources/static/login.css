@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: black;
+    font-family: Arial, sans-serif;
+}
+
+.header, .navbar, .main, .main-container, .main-container2, .login-container, .form, .main-text, .login-and-reminder, .text-beside-login, .register-here, .button, label, input {
+    box-sizing: border-box;
+}
+
+.header {
+    padding: 5px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: left;
+}
+
+.main {
+    color: white;
+    font-size: 30px;
+    padding: 15px 10px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.main-container, .main-container2 {
+    display: flex;
+    justify-content: center;
+}
+
+.login-container {
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 20px;
+    width: 500px;
+    margin-bottom: 20px;
+    border: 1px solid white;
+}
+
+label {
+    font-family: "Bebas Neue", sans-serif;
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    font-size: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.main-text {
+    color: white;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.button, .register-here {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+
+.button:hover, .register-here:hover {
+    border-color: white;
+    background-color: black;
+    color: white;
+    transform: translateY(-5px);
+
+}
+.button:active,.register-here:active{
+    background-color: wheat;
+}
+
+.login-and-reminder {
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+}
+
+.text-beside-login, .register-here {
+    color: black;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+}
+
+.text-beside-login{
+    color: white;
+    margin-left: 70px;
+}
+.register-here{
+    margin-left: 10px;
+}
