@@ -17,12 +17,12 @@ public class LoopPop_UserConfig {
         return args -> {
             LoopPop_User brad = new LoopPop_User(
                     1L,
-                    "Brad", "Brad@gmail.com",
+                    "Brad", "Brad@gmail.com","Games","Cranberries",
                     LocalDate.of(2000, Month.DECEMBER,
                             5)
             );
             LoopPop_User jacob = new LoopPop_User(
-                    "Jacob", "Jacob@gmail.com",
+                    "Jacob", "Jacob@gmail.com", "Basketball","Gorrilaz",
                     LocalDate.of(2003, Month.DECEMBER,
                             29)
             );

@@ -1,0 +1,94 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: black;
+  padding: 10px; /* Add padding to create the black edges */
+
+}
+
+.header {
+  margin-left: 13px;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  background-color: black;
+}
+
+.navbar {
+  background-color: black;
+}
+
+.container1 {
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.container2 {
+  display: flex;
+  gap: 10px;
+}
+
+.white-text,.white-text2{
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 10px;
+}
+.white-text2{
+  font-size: 14px;
+}
+.commentTag{
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+}
+
+.container3 {
+  border: 1px solid white;
+  background-color: #000000;
+  padding: 10px;
+  flex: 0 0 200px;
+}
+
+.container4 {
+  border: 1px solid white;
+  background-color: #000000;
+  padding: 10px;
+  flex: 1;
+}
+
+.comment-container{
+  border: 1px solid white;
+  margin: 10px;
+  background-color: black;
+}
+.SideViewButton{
+  background-color: black;
+  border: 1px white solid;
+  color: white;
+  padding: 5px;
+  margin: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.SideViewButton:hover{
+  background-color: white;
+  color: black;
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.commentForm{
+  border: 1px solid white;
+  padding: 10px
+}

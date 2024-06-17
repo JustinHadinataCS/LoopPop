@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+<div class="main-container">
+    <div class="header">
+        <div class="navbar">
+            <p class="main">LoopPop</p>
+        </div>
+    </div>
+    <div class="container2">
+        <div class="container3">
+            <div class="container">
+                <p class="white-text">
+                    SideView
+                </p>
+            </div>
+            <div class="container-sideview">
+                <button class="SideViewButton" id="CommentButton">Post Comment</button>
+            </div>
+            <form th:action="@{/api/v1/comments}" method="post" style="display: none;" id="commentForm" class="commentForm">
+                <div>
+                    <label for="content">Comment:</label>
+                    <input type="text" id="content" name="content" placeholder="Comment here.." required>
+                </div>
+                <p class="white-text2">What is the post about?</p>
+                <div>
+                    <label for="tag" class="commentTag">Tag:</label>
+                    <select id="tag" name="tag" required>
+                        <option value="Sports">Sports</option>
+                        <option value="Games">Games</option>
+                        <option value="Music">Music</option>
+                        <option value="Art">Art</option>
+                        <option value="Travelling">Travelling</option>
+                        <option value="Self-Improvement">Self-Improvement</option>
+                        <option value="Skincare">Skincare</option>
+                        <option value="Books">Books</option>
+                        <option value="Hobby">Hobby</option>
+                        <option value="Tech">Tech</option>
+                        <option value="Dating">Dating</option>
+                        <option value="Advice">Advice</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Gambling">Gambling</option>
+                        <option value="Random">Random</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="SideViewButton">Submit</button>
+            </form>
+
+        </div>
+        <div class="container4">
+            <p class="white-text">Comment Section:</p>
+            <div id="comments-container" class="comment-container">
+                <!-- Comments will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const showFormButton = document.getElementById("CommentButton");
+    const commentForm = document.getElementById("commentForm");
+
+    showFormButton.addEventListener("click", () => {
+        commentForm.style.display = commentForm.style.display === 'none' ? 'block' : 'none';
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchComments();
+    });
+
+function submitComment() {
+    const content = document.getElementById('content').value;
+    const tag = document.getElementById('tag').value;
+
+    fetch('/api/v1/comments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ content, tag })
+    })
+    .then(response => response.json())
+    .then(comment => {
+        // Handle the server response and update the UI
+        fetchComments();
+    })
+    .catch(error => console.error('Error submitting comment:', error));
+}
+</script>
+</body>
+</html>

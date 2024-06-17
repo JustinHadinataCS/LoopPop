@@ -36,26 +36,24 @@ public class RegistrationController {
         this.appUserService = appUserService;
     }
 
+    @GetMapping("/")
+    public String defaultPage() {
+        return "redirect:/index";
+    }
+
     @GetMapping("/index")
-    public String index(Model model, Principal principal){
-        UserDetails userDetails = appUserService.loadUserByUsername(principal.getName());
-        model.addAttribute("userdetail", userDetails);
+    public String index() {
         return "index";
     }
 
-    @GetMapping("/test")
-    public String timetable(){
-        return "test";
-    }
-
     @GetMapping("/login")
-    public String login(Model model){
+    public String login(Model model) {
         model.addAttribute("user", new RegistrationRequest());
         return "login";
     }
 
     @GetMapping("/registration")
-    public String registration(Model model){
+    public String registration(Model model) {
         model.addAttribute("user", new RegistrationRequest());
         return "registration";
     }
@@ -63,9 +61,14 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String registrationSave(@ModelAttribute("user") RegistrationRequest request) {
         boolean userExists = registrationService.register(request);
-        if(userExists){
+        if (userExists) {
             return "redirect:/registration?error";
         }
         return "redirect:/registration?success";
+    }
+
+    @GetMapping("/main")
+    public String mainPage() {
+        return "main";
     }
 }

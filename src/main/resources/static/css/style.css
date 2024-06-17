@@ -68,7 +68,7 @@ body {
     margin-left: 20px;
     max-width: 1000px; /* Adjust the maximum width as needed */
     word-wrap: break-word;
-    width: 1400px;
+    width: 500px;
 }
 
 
@@ -99,7 +99,7 @@ body {
 .long-Bar {
     margin-top: 20px;
     height: 200px;
-    width: 20px;
+    width: 0px;
     margin-left: 20px;
     margin-right: 20px;
 
@@ -139,6 +139,8 @@ body {
     margin-left: 10px;
     padding: 10px;
     margin-right: 10px; /* Add a unit (e.g., px) */
+    border: 1px solid white;
+    width: 600px;
 }
 
 .brand-text-4 {
@@ -216,4 +218,22 @@ body {
     color: white;
     position: relative;
     left: 0;
+  }
+
+  .loginpageButton{
+    font-family: "Titillium Web", sans-serif;
+    display: inline-block;
+    font-style: normal;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 20px 1px;
+    border: 1px white solid;
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  .loginpageButton:hover{
+    transform: translateY(-5px);
   }

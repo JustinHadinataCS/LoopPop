@@ -1,9 +1,11 @@
 package com.LoopPop.LoopPop.LoopPop_User;
+import com.LoopPop.LoopPop.Comment.Comment;
 import jakarta.persistence.*;
 
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 @Entity
 @Table
@@ -21,7 +23,12 @@ public class LoopPop_User {
     private Long id;
     private String name;
     private String email;
+    private String hobby;
+    private String favoriteMusic;
     private LocalDate dob;
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
 
     @Transient
     private Integer age;
@@ -29,24 +36,33 @@ public class LoopPop_User {
     public LoopPop_User(Long id,
                 String name,
                 String email,
+                String hobby,
+                String favoriteMusic,
                 LocalDate dob) {
 
         this.id = id;
         this.name = name;
         this.email = email;
+        this.hobby = hobby;
+        this.favoriteMusic = favoriteMusic;
         this.dob = dob;
     }
 
     public LoopPop_User(String name,
                 String email,
+                String hobby,
+                String favoriteMusic,
                 LocalDate dob) {
         this.name = name;
         this.email = email;
+        this.hobby = hobby;
+        this.favoriteMusic = favoriteMusic;
         this.dob = dob;
     }
 
     public LoopPop_User() {
     }
+
 
     public Long getId() {
         return id;
@@ -72,6 +88,22 @@ public class LoopPop_User {
         this.email = email;
     }
 
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public String getFavoriteMusic() {
+        return favoriteMusic;
+    }
+
+    public void setFavoriteMusic(String favoriteMusic) {
+        this.favoriteMusic = favoriteMusic;
+    }
+
     public LocalDate getDob() {
         return dob;
     }
@@ -94,6 +126,8 @@ public class LoopPop_User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", hobby='" + hobby + '\'' +
+                ", favoriteMusic='" + favoriteMusic + '\'' +
                 ", dob=" + dob +
                 ", age=" + age +
                 '}';

@@ -21,14 +21,15 @@ public class SecurityConfiguration {
                             .ignoringRequestMatchers("/registration*", "/login*");
                 })
                 .authorizeHttpRequests((authorize) -> {
-                    authorize.requestMatchers("/registration*", "/login*", "/error", "/css/**", "/js/**", "/images/**")
+                    authorize.requestMatchers("/registration*", "/login*", "/error", "/css/**", "/js/**", "/images/**", "index", "/","/api/v1/comments")
                             .permitAll()
                             .anyRequest()
                             .authenticated();
+
                 })
                 .httpBasic(withDefaults())
                 .formLogin(form -> form.loginPage("/login")
-                        .defaultSuccessUrl("/index", true)
+                        .defaultSuccessUrl("/main", true)
                         .usernameParameter("email")
                         .permitAll())
                 .logout(logout -> logout.invalidateHttpSession(true)
