@@ -1,0 +1,153 @@
+/* Global styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: black;
+    font-family: Arial, sans-serif;
+}
+
+/* Text styles */
+.login-text,
+.login-text-inside,
+label,
+.text-beside-login,
+.register-here {
+    font-family: "Bebas Neue", sans-serif;
+    color: white;
+}
+
+/* Container styles */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+
+}
+
+.login-container {
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 20px;
+    width: 500px;
+    background: none;
+}
+
+.sub-container, .sub-container-2 {
+    padding: 20px;
+}
+
+.sub-container-2 {
+    padding: 40px;
+}
+
+/* Removed conflicting styles */
+.login-container2 {
+    border-radius: 5px;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    background: none;
+    border: none;
+
+
+}
+
+/* Header styles */
+.header {
+    padding: 5px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: left;
+}
+
+.main {
+    color: white;
+    font-size: 30px;
+    padding: 15px 10px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+/* Form styles */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Button styles */
+button, .register-here {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+button:hover {
+    border-color: white;
+    background-color: black;
+    color: white;
+    transform: translateY(-5px);
+}
+button:active,.register-here:active{
+    background-color: wheat;
+}
+
+/* Additional styles */
+.login-and-reminder {
+    display: flex;
+}
+
+.reminder-container {
+    display: flex;
+    padding-left: 30px;
+    justify-content: right;
+}
+
+.text-beside-login {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    margin-left: 50px;
+}
+
+.register-here {
+    text-decoration: non;
+    margin-left:10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.register-here:hover {
+    border-color: white;
+    background-color: black;
+    color: white;
+    transform: translateY(-5px);
+}
+

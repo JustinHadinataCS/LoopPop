@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/register.css">
+</head>
+<body>
+<div class="header">
+    <div class="navbar">
+        <p class="main">LoopPop</p>
+    </div>
+</div>
+<div class="main-container">
+    <!-- Background box -->
+    <div class="background-box"></div>
+    php
+    Copy code
+    <div class="login-container">
+
+
+        <form th:action="@{/registration}" th:object="${user}" method="post">
+            <div>
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" th:field="*{firstname}" />
+            </div>
+            <div>
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" th:field="*{lastname}" />
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" th:field="*{email}" />
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" th:field="*{password}" />
+            </div>
+            <div class="login-container2">
+                <div class="login-and-reminder">
+                    <button type="submit" class="button">DONE</button>
+                    <div class="reminder-container">
+                        <p class="text-beside-login">Already have an account?</p>
+                        <a th:href="@{/login}" class="register-here">Login Here</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

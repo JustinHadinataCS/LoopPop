@@ -1,116 +1,153 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Titillium+Web:wght@200;300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .form-container {
-            background-color: #048ED4;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
+body {
+    overflow-x: hidden;
+    background-color: black;
+    font-family: Arial, sans-serif;
+}
 
-        h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
+.header, .navbar, .main, .main-container, .main-container2, .login-container, .form, .main-text, .login-and-reminder, .text-beside-login, .register-here, .button, label, input {
+    box-sizing: border-box;
+}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: white;
-        }
+.header {
+    padding: 5px;
+}
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
+.navbar {
+    display: flex;
+    justify-content: left;
+}
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #E38027;
-            border: none;
-            border-radius: 25px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 15px;
-        }
+.main {
+    color: white;
+    font-size: 30px;
+    padding: 15px 10px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
 
-        button:hover {
-            background-color: #B4651F;
-        }
+.main-container, .main-container2 {
+    display: flex;
+    justify-content: center;
+}
 
-        .message {
-            background-color: #E38027;
-            width: 80%;
-            max-width: 600px;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 10px auto;
-            text-align: center;
-            font-weight: bold;
-            color: white;
-        }
+.login-container {
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 20px;
+    width: 500px;
+    margin-bottom: 20px;
+    border: 1px solid white;
+}
 
-        span{
-            text-align: center;
-            width: 100%;
-            color: white;
-        }
+label {
+    font-family: "Bebas Neue", sans-serif;
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    font-size: 20px;
+}
 
-        a{
-            text-decoration: none;
-            color: #E38027;
-        }
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.main-text {
+    color: white;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.button, .register-here {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+
+.button:hover, .register-here:hover {
+    border-color: white;
+    background-color: black;
+    color: white;
+    transform: translateY(-5px);
+
+}
+.button:active,.register-here:active{
+    background-color: wheat;
+}
+
+.login-and-reminder {
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+}
+
+.text-beside-login, .register-here {
+    color: black;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+}
+
+.text-beside-login{
+    color: white;
+    margin-left: 70px;
+}
+.register-here{
+    margin-left: 10px;
+}
     </style>
 </head>
 <body>
-<div class="form-container">
-    <div th:if="${param.error}">
-        <p class="message success">Invalid Credentials!</p>
+<div class="header">
+    <div class="navbar">
+        <p class="main">LoopPop</p>
     </div>
-
-    <div th:if="${param.logout}">
-        <div class="message success">
-            <p>Logout Successful!</p>
-        </div>
+</div>
+<div class="main-container">
+    <div class="login-container">
+        <form method="post" role="form" th:action="@{/login}">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" required>
+            <label for="password">Password *</label>
+            <input type="password" name="password" id="password" required>
+            <div class="login-and-reminder">
+                <button type="submit" class="button">Login</button>
+                <p class="text-beside-login">Don't have an account?</p>
+                <a th:href="@{/registration}" class="register-here">Register here!</a>
+            </div>
+        </form>
     </div>
-
-    <h2>Login</h2>
-    <form method="post" role="form" th:action="@{/login}">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit">Login</button>
-    </form>
-
-    <span>No account? <a th:href="@{/registration}">Register</a></span>
+</div>
+<div class="main-container2">
+    <div class="login-container">
+        <p class="main-text">Welcome Back!</p>
+    </div>
 </div>
 </body>
 </html>
+

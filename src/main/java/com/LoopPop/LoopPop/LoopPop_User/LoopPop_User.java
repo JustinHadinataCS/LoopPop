@@ -10,13 +10,13 @@ import java.time.Period;
 public class LoopPop_User {
     @Id
     @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
+            name = "mainUser_sequence",
+            sequenceName = "mainUser_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator =  "user_sequence"
+            generator =  "mainUser_sequence"
     )
     private Long id;
     private String name;
