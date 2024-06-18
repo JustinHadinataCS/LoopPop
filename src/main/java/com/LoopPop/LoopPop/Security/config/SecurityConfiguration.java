@@ -16,25 +16,27 @@ public class SecurityConfiguration {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf((csrf) -> {
-                    csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                            .ignoringRequestMatchers("/registration*", "/login*");
-                })
-                .authorizeHttpRequests((authorize) -> {
-                    authorize.requestMatchers("/registration*", "/login*", "/error", "/css/**", "/js/**", "/images/**", "index", "/","/api/v1/comments")
-                            .permitAll()
-                            .anyRequest()
-                            .authenticated();
-
-                })
-                .httpBasic(withDefaults())
-                .formLogin(form -> form.loginPage("/login")
+        http.csrf(csrf -> csrf
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                        .ignoringRequestMatchers("/registration*", "/login*", "/api/v1/comments")
+                )
+                .authorizeRequests(authorize -> authorize
+                        .requestMatchers("/registration*", "/login*", "/error", "/css/**", "/js/**", "/images/**", "/", "/api/v1/comments")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated()
+                )
+                .formLogin(form -> form
+                        .loginPage("/login")
                         .defaultSuccessUrl("/main", true)
                         .usernameParameter("email")
-                        .permitAll())
-                .logout(logout -> logout.invalidateHttpSession(true)
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .invalidateHttpSession(true)
                         .clearAuthentication(true)
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout")));
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                );
 
         return http.build();
     }

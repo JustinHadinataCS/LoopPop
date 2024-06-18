@@ -17,7 +17,7 @@ public class LoopPop_UserConfig {
         return args -> {
             LoopPop_User brad = new LoopPop_User(
                     1L,
-                    "Brad", "Brad@gmail.com","Games","Cranberries",
+                    "Justin", "Brad@gmail.com","Games","Cranberries",
                     LocalDate.of(2000, Month.DECEMBER,
                             5)
             );

@@ -3,6 +3,7 @@ package com.LoopPop.LoopPop.Comment;
 import com.LoopPop.LoopPop.LoopPop_User.LoopPop_User;
 import com.LoopPop.LoopPop.LoopPop_User.LoopPop_UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -27,8 +29,20 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<Comment> addComment(@RequestBody CommentRequest commentRequest, @AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<?> addComment(@RequestBody CommentRequest commentRequest, @AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            // Return a JSON response for unauthorized access
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Collections.singletonMap("error", "Unauthorized"));
+        }
+
         LoopPop_User user = userService.findByEmail(userDetails.getUsername());
+        if (user == null) {
+            // Return a JSON response for user not found
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Collections.singletonMap("error", "User not found"));
+        }
+
         Comment comment = new Comment();
         comment.setContent(commentRequest.getContent());
         comment.setTag(commentRequest.getTag());
@@ -36,6 +50,7 @@ public class CommentController {
         Comment newComment = commentService.addComment(comment, user.getId());
         return ResponseEntity.ok(newComment);
     }
+
     @GetMapping
     public List<Comment> getAllComments() {
         return commentService.getAllComments();
