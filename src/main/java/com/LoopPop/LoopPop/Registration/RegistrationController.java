@@ -124,6 +124,13 @@ public class RegistrationController {
         // Redirect to a success page or display a success message
         return "redirect:/main?success";
     }
+    @GetMapping("/profile/{userId}")
+    public String getProfilePage(@PathVariable Long userId, Model model) {
+        LoopPop_User user = loopPop_UserService.findById(userId);
+        model.addAttribute("user", user);
+        return "profile";
+    }
+
 
 
 }

@@ -73,4 +73,8 @@ public class LoopPop_UserService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
     }
 
+    public LoopPop_User findById(Long userId) { // Add this method
+        return loopPop_userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalStateException("User with id " + userId + " does not exist!"));
+    }
 }

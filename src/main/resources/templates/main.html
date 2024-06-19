@@ -135,11 +135,16 @@
 
                     const containerHeader = document.createElement('div');
                     containerHeader.classList.add('container-header');
+
                     const nameElement = document.createElement('p');
                     nameElement.classList.add('white-text');
                     nameElement.classList.add('name-x');
                     nameElement.innerText = comment.user.name;
 
+                    // Add event listener to redirect to commentor's profile page
+                    nameElement.addEventListener('click', () => {
+                        window.location.href = `/profile/${comment.user.id}`;
+                    });
                     const tagElement = document.createElement('p');
                     tagElement.classList.add('white-text');
                     tagElement.classList.add('tag-x');
