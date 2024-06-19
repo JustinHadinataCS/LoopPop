@@ -3,9 +3,16 @@ package com.LoopPop.LoopPop.Comment;
 import com.LoopPop.LoopPop.LoopPop_User.LoopPop_User;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Entity
 public class Comment {
+
+    private static final Logger logger = LoggerFactory.getLogger(Comment.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +25,17 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private LoopPop_User user;
+
+    // Add logging statements
+    @PostLoad
+    @PostPersist
+    @PostUpdate
+    private void logFields() {
+        logger.info("id: {}", id);
+        logger.info("content: {}", content);
+        logger.info("tag: {}", tag);
+        logger.info("user: {}", user);
+    }
 
     // Getters and setters
 

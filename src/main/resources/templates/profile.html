@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+    <!-- Add necessary CSS and JS files for Bootstrap and Thymeleaf -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3>User Profile</h3>
+        </div>
+        <div class="card-body">
+            <p>Name: <span th:text="${user.name}"></span></p>
+            <p>Email: <span th:text="${user.email}"></span></p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userProfileModal">
+                Edit Profile
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="userProfileModal" tabindex="-1" role="dialog" aria-labelledby="userProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userProfileModalLabel">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/user/profile/update}" method="post" id="profileForm">
+                        <div class="form-group">
+                            <label for="favoriteHobby">Favorite Hobby</label>
+                            <input type="text" class="form-control" id="hobby" name="hobby" th:value="${user.hobby}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="favoriteMusic">Favorite Music</label>
+                            <input type="text" class="form-control" id="favoriteMusic" name="favoriteMusic" th:value="${user.favoriteMusic}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

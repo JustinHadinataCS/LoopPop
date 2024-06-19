@@ -57,10 +57,20 @@ public class LoopPop_UserService {
             }
             loopPop_user.setEmail(updatedLoopPop_User.getEmail());
         }
+
+        // Update hobby and favoriteMusic
+        if (updatedLoopPop_User.getHobby() != null) {
+            loopPop_user.setHobby(updatedLoopPop_User.getHobby());
+        }
+
+        if (updatedLoopPop_User.getFavoriteMusic() != null) {
+            loopPop_user.setFavoriteMusic(updatedLoopPop_User.getFavoriteMusic());
+        }
     }
 
     public LoopPop_User findByEmail(String email) {
         return loopPop_userRepository.findsLoopPopUserByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
     }
+
 }

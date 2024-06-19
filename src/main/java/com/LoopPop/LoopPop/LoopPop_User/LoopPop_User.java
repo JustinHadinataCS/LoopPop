@@ -25,6 +25,8 @@ public class LoopPop_User {
     private String email;
     private String hobby;
     private String favoriteMusic;
+
+    @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_DATE")
     private LocalDate dob;
 
     @OneToMany(mappedBy = "user")
