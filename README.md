@@ -13,21 +13,16 @@ A fun social media platform.
 <img src="ScreenShot2.png" alt="Screenshot 2" width="600">
 
 ## Features
-- Feature 1 description
-- Feature 2 description
+- Live Comment Feature!
+- View Others' User Profile!
+- Cuztomize Your Own!
 
 ## Installation
-Instructions for installation
-
+- Download the repository In Github
+   
 ## Usage
-Usage instructions
-
-## Contribution
-Guidelines for contributors
-
-## License
-Information about the license
-
----
-
-<span style="font-size: larger;">Feel free to customize the README further!</span>
+- Navigate through the src/main/java/com.example.demo
+- Find the LoopPopApplication
+- Run it
+- Enter http://localhost:8080/ in your browser
+  
