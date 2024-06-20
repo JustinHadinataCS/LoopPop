@@ -15,7 +15,7 @@ LoopPop is a dynamic social platform that allows users to share their interests,
 - **Thymeleaf**: A modern server-side Java template engine for web and standalone environments.
 - **SQL**: Used for managing and manipulating the application's database.
 - **HTML/CSS/JavaScript**: Used for creating the frontend of the application.
-- **PostgreSQL**: Used for managing the database of the application.
+- **Maven**: Used for build, publish, and deploy several projects at once for better project management.
 
 
 ## Features
