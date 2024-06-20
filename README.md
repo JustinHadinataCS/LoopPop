@@ -1,6 +1,9 @@
 # Justin Hadinata 2702298236 / Final project / OOP / L2AC
 
 
+<br> All of the documentation, demonstrations, and the Class Diagram are located in this repository.
+
+
 ## LoopPop!
 <img src="FinalProject_Poster.png" alt="LoopPopPoster" width="600">
 
