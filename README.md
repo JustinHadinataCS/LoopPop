@@ -3,7 +3,8 @@
 
 ## LoopPop!
 <img src="FinalProject_Poster.png" alt="LoopPopPoster" width="600">
-# LoopPop: A Social Platform for Sharing and Discovering
+
+## LoopPop: A Social Platform for Sharing and Discovering
 
 LoopPop is a dynamic social platform that allows users to share their interests, hobbies, and favorite music with others. Built using Spring Boot, Java, Thymeleaf, and SQL, this project provides a user-friendly interface for registration, profile customization, and commenting.
 
@@ -14,6 +15,8 @@ LoopPop is a dynamic social platform that allows users to share their interests,
 - **Thymeleaf**: A modern server-side Java template engine for web and standalone environments.
 - **SQL**: Used for managing and manipulating the application's database.
 - **HTML/CSS/JavaScript**: Used for creating the frontend of the application.
+- **PostgreSQL**: Used for managing the database of the application.
+
 
 ## Features
 
