@@ -2,12 +2,15 @@
 
 A fun social media platform.
 
+## LoopPop!
+![OurPoster](FinalProject_Poster.png)
+
 ## Video Demonstration
 [Watch the video demonstration here!](https://youtu.be/W4wNyJpvC6U)
 
 ## Screenshots
-![Screenshot 1](path_to_screenshot1.png)
-![Screenshot 2](path_to_screenshot2.png)
+![Screenshot 1](ScreenShot1.png)
+![Screenshot 2](ScreenShot2.png)
 
 ## Features
 - Feature 1 description
