@@ -53,5 +53,9 @@ To run this project locally, follow these steps:
 <img src="ScreenShot1.png" alt="Screenshot 1" width="600">
 <img src="ScreenShot2.png" alt="Screenshot 2" width="600">
 
+## Class Diagram
+<img src="ClassDiagram.png" alt="ClassDiagram" width="600">
+
+
 
   
