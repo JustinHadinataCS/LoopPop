@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class LoopPopApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LoopPopApplication.class, args);
+		SpringApplication.run(new Class[]{LoopPopApplication.class}, args);
 	}
 }
 

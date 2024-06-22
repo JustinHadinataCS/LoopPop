@@ -7,31 +7,42 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
+// Mark this class as a JPA entity (a class that is mapped to a database table)
 @Entity
-@Table(
-        name = "app_user"
-)
+// Specify the details of the database table that this entity will map to
+@Table(name = "app_user")
 public class AppUser implements UserDetails {
+
+    // Configure the generation of unique IDs for instances of AppUser, using a database sequence
     @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
-            allocationSize = 1
+            name = "user_sequence",         // Name of the sequence generator
+            sequenceName = "user_sequence", // Name of the database sequence
+            allocationSize = 1              // Increment size for the sequence
     )
+    // Specify the primary key of the entity
     @Id
+    // Define the strategy for generating the primary key value
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
+            strategy = GenerationType.SEQUENCE, // Use sequence-based ID generation
+            generator = "user_sequence"         // Specify the sequence generator to use
     )
     private Long id;
+
+    // Define fields to map to columns in the app_user table
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+
+    // Specify that the appUserRole field should be persisted as a String in the database
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
-    private Boolean locked = false;
-    private Boolean enabled = true;
 
+    // Define fields for account status with default values
+    private Boolean locked = false;   // Indicates if the account is locked
+    private Boolean enabled = true;   // Indicates if the account is enabled
+
+    // Constructor to initialize all fields except id
     public AppUser(String firstName, String lastName, String email, String password, AppUserRole appUserRole) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,14 +51,19 @@ public class AppUser implements UserDetails {
         this.appUserRole = appUserRole;
     }
 
+    // Default constructor for JPA
     public AppUser() {
     }
 
+    // Return the authorities granted to the user (required by UserDetails)
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Create a SimpleGrantedAuthority object with the name of the user's role
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(this.appUserRole.name());
+        // Return the authority as a collection
         return Collections.singletonList(authority);
     }
 
+    // Getters for the fields (required by UserDetails and other purposes)
     public Long getId() {
         return this.id;
     }
@@ -64,30 +80,37 @@ public class AppUser implements UserDetails {
         return this.password;
     }
 
+    // Return the username for authentication (in this case, the email)
     public String getUsername() {
         return this.email;
     }
 
+    // Account non-expired status (always true in this case)
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    // Account non-locked status (true if the account is not locked)
     public boolean isAccountNonLocked() {
         return !this.locked;
     }
 
+    // Credentials non-expired status (always true in this case)
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    // Account enabled status
     public boolean isEnabled() {
         return this.enabled;
     }
 
+    // Setter for the password
     public void setPassword(String password) {
         this.password = password;
     }
 
+    // Overridden equals method to compare AppUser objects based on their fields
     public boolean equals(final Object o) {
         if (o == this) {
             return true;
@@ -199,10 +222,12 @@ public class AppUser implements UserDetails {
         }
     }
 
+    // Helper method used in the equals method to check if the other object can be equal to this one
     protected boolean canEqual(final Object other) {
         return other instanceof AppUser;
     }
 
+    // Overridden hashCode method to generate a hash code based on the fields
     public int hashCode() {
         boolean PRIME = true;
         int result = 1;

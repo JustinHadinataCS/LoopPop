@@ -7,41 +7,49 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
+// Mark this class as a JPA entity (a class that is mapped to a database table)
 @Entity
-@Table
+// Specify the details of the database table that this entity will map to
+@Table(name = "looppop_user")
 public class LoopPop_User {
+
+    // Primary key field mapped to the 'id' column in the database
     @Id
+    // Configure a sequence generator for generating unique IDs
     @SequenceGenerator(
-            name = "mainUser_sequence",
-            sequenceName = "mainUser_sequence",
-            allocationSize = 1
+            name = "mainUser_sequence",         // Name of the sequence generator
+            sequenceName = "mainUser_sequence", // Name of the database sequence
+            allocationSize = 1                  // Increment size for the sequence
     )
+    // Specify the strategy for generating the primary key value
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator =  "mainUser_sequence"
+            strategy = GenerationType.SEQUENCE, // Use sequence-based ID generation
+            generator =  "mainUser_sequence"    // Name of the sequence generator to use
     )
     private Long id;
+
+    // Fields mapped to columns in the 'looppop_user' table
     private String name;
     private String email;
     private String hobby;
     private String favoriteMusic;
 
+    // Column mapped to 'dob' in the database, not nullable, default value is current date
     @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_DATE")
     private LocalDate dob;
 
+    // One-to-many relationship with Comment entities, mapped by the 'user' field in Comment class
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 
+    // Transient field not persisted in the database
     @Transient
     private Integer age;
 
-    public LoopPop_User(Long id,
-                String name,
-                String email,
-                String hobby,
-                String favoriteMusic,
-                LocalDate dob) {
+    // Constructors
 
+    // Constructor with all fields
+    public LoopPop_User(Long id, String name, String email, String hobby, String favoriteMusic, LocalDate dob) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -50,11 +58,8 @@ public class LoopPop_User {
         this.dob = dob;
     }
 
-    public LoopPop_User(String name,
-                String email,
-                String hobby,
-                String favoriteMusic,
-                LocalDate dob) {
+    // Constructor without 'id' field (typically used when creating new entities)
+    public LoopPop_User(String name, String email, String hobby, String favoriteMusic, LocalDate dob) {
         this.name = name;
         this.email = email;
         this.hobby = hobby;
@@ -62,9 +67,11 @@ public class LoopPop_User {
         this.dob = dob;
     }
 
+    // Default constructor (required by JPA)
     public LoopPop_User() {
     }
 
+    // Getters and Setters for all fields (required by JPA)
 
     public Long getId() {
         return id;
@@ -114,6 +121,7 @@ public class LoopPop_User {
         this.dob = dob;
     }
 
+    // Calculate and return age based on 'dob' field
     public Integer getAge() {
         return Period.between(dob, LocalDate.now()).getYears();
     }
@@ -122,6 +130,7 @@ public class LoopPop_User {
         this.age = age;
     }
 
+    // Override toString method to provide a string representation of the object
     @Override
     public String toString() {
         return "LoopPop_User{" +
@@ -135,4 +144,5 @@ public class LoopPop_User {
                 '}';
     }
 }
+
 //this is the getter, setter and constructor, basically simpan data spaya Layer lain bsa pake.
